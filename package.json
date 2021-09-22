@@ -1,0 +1,16 @@
+{
+  "name": "computer_graphics_scam",
+  "version": "1.0.0",
+  "description": "todo",
+  "main": "main.js",
+  "author": "vitekkor",
+  "scripts": {
+    "start": "electron ."
+  },
+  "keywords": [],
+  "license": "ISC",
+  "devDependencies": {
+    "electron": "^15.0.0",
+    "electron-packager": "^15.4.0"
+  }
+}
