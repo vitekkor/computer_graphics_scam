@@ -5,7 +5,8 @@
   "main": "main.js",
   "author": "vitekkor",
   "scripts": {
-    "start": "electron ."
+    "start": "electron .",
+    "package": "electron-packager ./ -all"
   },
   "keywords": [],
   "license": "ISC",
