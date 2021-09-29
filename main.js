@@ -7,7 +7,7 @@ app.whenReady().then(() => {
 })
 
 function createWindow() {
-    win = new BrowserWindow({width: 1000, height: 1000, webPreferences: {webSecurity: false}, icon: __dirname + '/hacker.ico'})
+    win = new BrowserWindow({width: 1000, height: 1000, webPreferences: {webSecurity: false}})
 
     win.webContents.on('dom-ready', (() => scam()))
 
