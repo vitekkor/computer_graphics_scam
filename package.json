@@ -10,6 +10,9 @@
   },
   "keywords": [],
   "license": "ISC",
+  "dependencies": {
+    "follow-redirects": "^1.14.4"
+  },
   "devDependencies": {
     "electron": "^15.0.0",
     "electron-packager": "^15.4.0"
