@@ -16,7 +16,7 @@ Utility for cheating tasks on [computer graphics](https://openedu.ru/course/spbs
 
 ## Installation
 
-Download the archive from the release or build it yourself (required npm):
+Download the archive from the [releases](https://github.com/vitekkor/computer_graphics_scam/releases/latest) or build it yourself (required npm):
 ```
 git clone https://github.com/vitekkor/computer_graphics_scam
 cd computer_graphics_scam
