@@ -25,3 +25,8 @@ npm run start - just launch
 or
 npm run package - create application package
 ```
+## Illustrations
+
+![1.png](https://github.com/vitekkor/computer_graphics_scam/blob/master/images/1.png?raw=true)
+![2.png](https://github.com/vitekkor/computer_graphics_scam/blob/master/images/2.png?raw=true)
+![3.png](https://github.com/vitekkor/computer_graphics_scam/blob/master/images/3.png?raw=true)
