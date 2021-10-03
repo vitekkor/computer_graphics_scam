@@ -1,4 +1,4 @@
-const {app, BrowserWindow} = require('electron')
+const {app, BrowserWindow, /*session*/} = require('electron')
 const https = require('follow-redirects').https;
 const fs = require('fs');
 
@@ -12,7 +12,7 @@ const request = https.get(url, function (response) {
         file.close()
         console.log("downloaded")
         fs.readFile("answers.tsv", 'utf-8', function (err, content) {
-            answers = content.split('\t\t\t\t\r\n').slice(1).map((str) => {
+            answers = content.split('\r\n').slice(1).map((str) => {
                 var data = str.split('\t');
                 return {question: data[0], answer: data[1]}
             });
@@ -47,6 +47,10 @@ function createWindow() {
     win = new BrowserWindow({width: 1000, height: 1000, webPreferences: {webSecurity: false}})
 
     win.webContents.on('dom-ready', (() => scam()))
+
+    /*session.defaultSession.clearStorageData([], function (data) { //for development purposes only
+        console.log('cleared');
+    })*/
 
     win.loadURL('https://courses.openedu.ru/courses/course-v1:spbstu+COMPGR+fall_2021/progress')
 }
