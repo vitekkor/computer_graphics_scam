@@ -43,6 +43,12 @@ app.on('window-all-closed', () => {
     app.quit()
 })
 
+app.on('quit', () => {
+    fs.unlink("answers.tsv", () => {
+    })
+    app.quit()
+})
+
 function createWindow() {
     win = new BrowserWindow({width: 1000, height: 1000, webPreferences: {webSecurity: false}})
 
