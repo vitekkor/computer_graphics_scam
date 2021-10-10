@@ -62,7 +62,7 @@ function createWindow() {
 }
 
 function scam() {
-    if (win.webContents.getTitle().includes("Задание") && win.webContents.getURL().includes("courses.openedu.ru/courses/course-v1:spbstu+COMPGR+fall_2021/courseware")) {
+    if (win.webContents.getTitle().toLowerCase().includes("задание") && win.webContents.getURL().includes("courses.openedu.ru/courses/course-v1:spbstu+COMPGR+fall_2021/courseware")) {
         let code = `let button = document.createElement("button");
 button.innerText = "Scam!";
 button.onclick = function () {
