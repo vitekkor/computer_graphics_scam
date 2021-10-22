@@ -11,13 +11,13 @@
     } else questions.forEach((q) => {
         if (q) {
             //var regex = new RegExp(q.innerText, "i");
-            var answer = answers.find((ans) => {
+            var answer = answers.filter((ans) => {
                 return ans.question.toLowerCase().includes(q.innerText.toLowerCase())
             });
-            if (answer) {
+            if (answer.length) {
                 var ans = document.createElement('div');
                 ans.className = 'testScam';
-                ans.innerHTML = `Answer: ${answer.answer}`;
+                ans.innerHTML = `Answer: ${answer.map(e => e.answer).join("<div style='font-weight: bold'>ANOTHER ANSWER:</div>")}`;
                 q.insertAdjacentElement('afterend', ans);
                 /* auto-select answer
                 try {
