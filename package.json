@@ -11,7 +11,8 @@
   "keywords": [],
   "license": "ISC",
   "dependencies": {
-    "follow-redirects": "^1.14.4"
+    "follow-redirects": "^1.14.4",
+    "adm-zip": "^0.5.9"
   },
   "devDependencies": {
     "electron": "^15.0.0",
