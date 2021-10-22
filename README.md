@@ -25,6 +25,10 @@ npm run start - just launch
 or
 npm run package - create application package
 ```
+## Features
+* Cheating code for 3d modeling.
+* Simple mutations of this code
+* Cheating control tests
 ## Illustrations
 
 ![1.png](https://github.com/vitekkor/computer_graphics_scam/blob/master/images/1.png?raw=true)
