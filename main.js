@@ -1,5 +1,6 @@
 const {app, BrowserWindow, /*session*/} = require('electron')
 const https = require('follow-redirects').https;
+const path = require('path');
 const fs = require('fs');
 const AdmZip = require("adm-zip");
 
@@ -32,21 +33,21 @@ let taskScam;
 let testScam;
 let parseAnswers;
 
-fs.readFile("taskScam.js", 'utf-8', function (err, content) {
+fs.readFile(path.resolve(__dirname, "taskScam.js"), 'utf-8', function (err, content) {
     if (err) {
         console.log(err.stack);
     }
     taskScam = content
 });
 
-fs.readFile("testScam.js", 'utf-8', function (err, content) {
+fs.readFile(path.resolve(__dirname, "testScam.js"), 'utf-8', function (err, content) {
     if (err) {
         console.log(err.stack);
     }
     testScam = content
 });
 
-fs.readFile("parseAnswers.js", 'utf-8', function (err, content) {
+fs.readFile(path.resolve(__dirname, "parseAnswers.js"), 'utf-8', function (err, content) {
     if (err) {
         console.log(err.stack);
     }
