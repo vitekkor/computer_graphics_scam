@@ -47,7 +47,9 @@ button.onclick = function () {
     o.innerHTML += "<p>The scam was successful</p><p>Result:</p>";
     for (let e = 0; e < l.length; e++) o.innerHTML += `<p>${l[e]}</p>`;
     s.appendChild(o);
-    document.getElementById("fullscrin").insertAdjacentElement("afterend", s);
+    let fullscrin_ = document.getElementById("fullscrin");
+    if (!fullscrin_) fullscrin_ = document.querySelector('.problem-progress');
+    fullscrin_.insertAdjacentElement("afterend", s);
     document.getElementById('pasteButton').onclick = function () {
         document.getElementsByTagName("iframe")[0].contentWindow.putSourceInEditor(l.join("\n"));
         document.getElementsByClassName('close')[0].click();
