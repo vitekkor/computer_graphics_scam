@@ -73,6 +73,7 @@ check.onclick = function () {
     document.getElementsByClassName('submit')[0].click()
 };
 let fullscrin = document.getElementById("fullscrin");
+if (!fullscrin) fullscrin = document.querySelector('.problem-progress');
 fullscrin.parentElement.insertBefore(button, fullscrin.nextSibling);
 button.insertAdjacentElement('afterend', check);
 let mutations = document.createElement('label');
