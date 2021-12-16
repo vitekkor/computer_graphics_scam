@@ -101,7 +101,7 @@ function scam() {
             console.log(err.stack)
         })
     }
-    if (win.webContents.getTitle().toLowerCase().includes('контрольный тест') && win.webContents.getURL().includes("courses.openedu.ru/courses/course-v1:spbstu+COMPGR+fall_2021/courseware")) {
+    if (win.webContents.getTitle().toLowerCase().includes('контрольный тест') && win.webContents.getURL().includes("courses.openedu.ru/courses/course-v1:spbstu+COMPGR+fall_2021/courseware") || win.webContents.getTitle().toLowerCase().includes('финальное тестирование')) {
         let code = `var answers = ${answers.print()};${testScam}`;
         setTimeout(() => {
             win.webContents.executeJavaScript(code).then(r => {

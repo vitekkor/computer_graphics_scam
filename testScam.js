@@ -12,7 +12,7 @@
         if (q) {
             //var regex = new RegExp(q.innerText, "i");
             var answer = answers.filter((ans) => {
-                return ans.question.toLowerCase().includes(q.innerText.toLowerCase())
+                return q.innerText.toLowerCase().includes(ans.question.toLowerCase())
             });
             if (answer.length) {
                 var ans = document.createElement('div');
