@@ -84,8 +84,7 @@ function createWindow() {
         console.log('cleared');
     })*/
 
-    // win.loadURL('https://apps.openedu.ru/learning/course/course-v1:spbstu+COMPGR+fall_2022/progress')
-    win.loadURL('https://apps.openedu.ru/learning/course/course-v1:spbstu+COMPGR+fall_2022/block-v1:spbstu+COMPGR+fall_2022+type@sequential+block@a6fd68d5af07456dae052977cd7d9f6c/block-v1:spbstu+COMPGR+fall_2022+type@vertical+block@9cf1d3e95ead4a1fb8e3dcd2d840a0f1')
+    win.loadURL('https://apps.openedu.ru/learning/course/course-v1:spbstu+COMPGR+fall_2022/progress')
 }
 
 const lab = ['задание', 'лабораторная работа']

@@ -1,9 +1,18 @@
+function getRealDoc() {
+    let iframe = document.getElementsByTagName("iframe")[0]
+    if (iframe) {
+        return iframe.contentDocument
+    } else {
+        return null
+    }
+}
+
 (function testScam() {
-    if (document.getElementsByClassName('testScam').length) {
+    if (getRealDoc().getElementsByClassName('testScam').length) {
         console.log("Answers already added")
         return;
     }
-    var questions = Array.from(document.getElementsByClassName('problem-header'));
+    var questions = Array.from(getRealDoc().getElementsByClassName('problem-header'));
     console.log('Questions:');
     console.log(questions);
     if (answers.length === 0) {
@@ -12,7 +21,7 @@
         if (q) {
             //var regex = new RegExp(q.innerText, "i");
             var answer = answers.filter((ans) => {
-                return q.innerText.toLowerCase().includes(ans.question.toLowerCase())
+                return ans.question.toLowerCase().includes(q.innerText.toLowerCase())
             });
             if (answer.length) {
                 var ans = document.createElement('div');
