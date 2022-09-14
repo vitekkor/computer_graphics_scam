@@ -1,16 +1,52 @@
+function waitForIFrame() {
+    return new Promise(resolve => {
+        if (getIframe(false)) {
+            return resolve(getIframe(false));
+        }
+        let timerId = setInterval(() => {
+            if (getIframe(false)) {
+                clearInterval(timerId)
+                return resolve(getIframe(false));
+            }
+        }, 1000);
+    });
+}
+
+function getIframe(log = true) {
+    try {
+        let t = document.getElementsByTagName("iframe")
+        return t[0].contentDocument.getElementsByTagName("iframe")[0]
+    } catch (e) {
+        if (log) {
+            console.info(e.stack)
+            console.info("Couldn't download 3D modeling answers. Please, contact the developer")
+        }
+        return null
+    }
+}
+
+function getRealDoc() {
+    let iframe = document.getElementsByTagName("iframe")[0]
+    if (iframe) {
+        return iframe.contentDocument
+    } else {
+        return null
+    }
+}
+
 let button = document.createElement("button");
 button.innerText = "Scam!";
 button.onclick = function () {
-    if (document.getElementById('myModal')) {
-        document.getElementById('myModal').parentElement.removeChild(document.getElementById('myModal'))
+    if (getRealDoc().getElementById('myModal')) {
+        getRealDoc().getElementById('myModal').parentElement.removeChild(getRealDoc().getElementById('myModal'))
     }
-    let mutationsEnabled = document.getElementById('mutations').children[0].checked;
+    let mutationsEnabled = getRealDoc().getElementById('mutations').children[0].checked;
     let mutations = [];
-    let e = "", t = document.getElementsByTagName("iframe");
-    if (t.length > 0) try {
-        e = t[0].contentWindow.OpenJsCad.Processor.prototype.getFullScript("model")
+    let e, t = getIframe();
+    try {
+        e = t.contentWindow.OpenJsCad.Processor.prototype.getFullScript("model")
     } catch (n) {
-        e = t[0].contentWindow.OpenJsCad.Processor.prototype.getFullScript("model")
+        e = t.contentWindow.OpenJsCad.Processor.prototype.getFullScript("model")
         console.log("3D modeling answers are downloaded")
     }
     let n = js_beautify(e.split("\n").slice(2)[0]).split("\n"), l = [], c = !1;
@@ -36,7 +72,7 @@ button.onclick = function () {
     s.id = "myModal";
     let o = document.createElement("div");
     o.className = "modal-content";
-    let i = document.createElement("span");
+    let i = document.createElement("button");
     i.className = "close";
     i.innerHTML = "&times;";
     o.appendChild(i);
@@ -47,16 +83,16 @@ button.onclick = function () {
     o.innerHTML += "<p>The scam was successful</p><p>Result:</p>";
     for (let e = 0; e < l.length; e++) o.innerHTML += `<p>${l[e]}</p>`;
     s.appendChild(o);
-    let fullscrin_ = document.getElementById("fullscrin");
-    if (!fullscrin_) fullscrin_ = document.querySelector('.problem-progress');
+    let fullscrin_ = getRealDoc().getElementById("fullscrin");
+    if (!fullscrin_) fullscrin_ = getRealDoc().querySelector('.problem-progress');
     fullscrin_.insertAdjacentElement("afterend", s);
-    document.getElementById('pasteButton').onclick = function () {
-        document.getElementsByTagName("iframe")[0].contentWindow.putSourceInEditor(l.join("\n"));
-        document.getElementsByClassName('close')[0].click();
-        document.getElementById('check').style.display = 'block';
+    getRealDoc().getElementById('pasteButton').onclick = function () {
+        getIframe().contentWindow.putSourceInEditor(l.join("\n"));
+        getRealDoc().getElementsByClassName('close')[0].click();
+        getRealDoc().getElementById('check').style.display = 'block';
     };
-    document.getElementsByClassName("close")[0].onclick = function () {
-        document.getElementById("myModal").style.display = "none"
+    getRealDoc().getElementsByClassName("close")[0].onclick = function () {
+        getRealDoc().getElementById("myModal").style.display = "none"
     }
 };
 let script = document.createElement("script");
@@ -68,20 +104,23 @@ check.innerText = 'Check Result!';
 check.id = 'check';
 check.style.display = 'none';
 check.onclick = function () {
-    let t = document.getElementsByTagName('iframe')[0];
+    let t = getIframe();
     t.contentDocument.getElementById('modelrender').click();
     t.contentDocument.getElementById('viewupdate').click();
     t.contentDocument.getElementById('controlentity').click();
-    document.getElementsByClassName('submit')[0].click()
+    getRealDoc().getElementsByClassName('submit')[0].click()
 };
-let fullscrin = document.getElementById("fullscrin");
-if (!fullscrin) fullscrin = document.querySelector('.problem-progress');
-fullscrin.parentElement.insertBefore(button, fullscrin.nextSibling);
-button.insertAdjacentElement('afterend', check);
-let mutations = document.createElement('label');
-mutations.id = 'mutations';
-mutations.innerHTML = '<input type="checkbox"/>Enable code mutations';
-button.insertAdjacentElement('afterend', mutations);
+
+waitForIFrame().then(r => {
+    let fullscrin = getRealDoc().getElementById("fullscrin");
+    if (!fullscrin) fullscrin = getRealDoc().querySelector('.problem-progress');
+    fullscrin.parentElement.insertBefore(button, fullscrin.nextSibling);
+    button.insertAdjacentElement('afterend', check);
+    let mutations = document.createElement('label');
+    mutations.id = 'mutations';
+    mutations.innerHTML = '<input type="checkbox"/>Enable code mutations';
+    button.insertAdjacentElement('afterend', mutations);
+})
 
 function makeid(length) {
     let result = '';

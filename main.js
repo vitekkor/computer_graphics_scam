@@ -84,14 +84,30 @@ function createWindow() {
         console.log('cleared');
     })*/
 
-    win.loadURL('https://courses.openedu.ru/courses/course-v1:spbstu+COMPGR+fall_2021/progress')
+    // win.loadURL('https://apps.openedu.ru/learning/course/course-v1:spbstu+COMPGR+fall_2022/progress')
+    win.loadURL('https://apps.openedu.ru/learning/course/course-v1:spbstu+COMPGR+fall_2022/block-v1:spbstu+COMPGR+fall_2022+type@sequential+block@a6fd68d5af07456dae052977cd7d9f6c/block-v1:spbstu+COMPGR+fall_2022+type@vertical+block@9cf1d3e95ead4a1fb8e3dcd2d840a0f1')
+}
+
+const lab = ['задание', 'лабораторная работа']
+const test = ['контрольный тест']
+
+function isLab(title) {
+    return lab.some((element) => {
+         return title.includes(element)
+    })
+}
+
+function isTest(title) {
+    return test.some((element) => {
+        return title.includes(element)
+    })
 }
 
 function scam() {
     if (!answers && unparsedAnswers) {
         parseAnswersInDom()
     }
-    if (win.webContents.getTitle().toLowerCase().includes("задание") && win.webContents.getURL().includes("courses.openedu.ru/courses/course-v1:spbstu+COMPGR+fall_2021/courseware")) {
+    if (isLab(win.webContents.getTitle().toLowerCase())) {
 
         let code = taskScam;
         win.webContents.insertCSS(css);
@@ -101,7 +117,7 @@ function scam() {
             console.log(err.stack)
         })
     }
-    if (win.webContents.getTitle().toLowerCase().includes('контрольный тест') && win.webContents.getURL().includes("courses.openedu.ru/courses/course-v1:spbstu+COMPGR+fall_2021/courseware") || win.webContents.getTitle().toLowerCase().includes('финальное тестирование')) {
+    if (isTest(win.webContents.getTitle().toLowerCase())) {
         let code = `var answers = ${answers.print()};${testScam}`;
         setTimeout(() => {
             win.webContents.executeJavaScript(code).then(r => {
