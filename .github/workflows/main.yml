@@ -19,8 +19,11 @@ jobs:
           -v ~/.cache/electron:/root/.cache/electron \
           -v ~/.cache/electron-builder:/root/.cache/electron-builder \
           electronuserland/builder:wine
-      - name: Build
+      - name: Setup node
         uses: actions/setup-node@v3
-      - run: npm run dist
+      - name: Install dependencies
+        run: npm install
+      - name: Package
+        run: npm run dist
       - name: Show
         run: pwd && ls
