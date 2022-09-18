@@ -120,6 +120,7 @@ waitForIFrame().then(r => {
     mutations.id = 'mutations';
     mutations.innerHTML = '<input type="checkbox"/>Enable code mutations';
     button.insertAdjacentElement('afterend', mutations);
+    console.log("Script has been successfully injected");
 })
 
 function makeid(length) {
@@ -144,5 +145,3 @@ function ifMutation(mutation, mutations) {
      ${mutations[Math.floor(Math.random() * mutations.length)]} = ${mutation}
      }`
 }
-
-console.log("Script has been successfully injected");

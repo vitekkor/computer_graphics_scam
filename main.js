@@ -33,6 +33,8 @@ let taskScam;
 let testScam;
 let parseAnswers;
 
+let css;
+
 fs.readFile(path.resolve(__dirname, "taskScam.js"), 'utf-8', function (err, content) {
     if (err) {
         console.log(err.stack);
@@ -54,6 +56,21 @@ fs.readFile(path.resolve(__dirname, "parseAnswers.js"), 'utf-8', function (err, 
     parseAnswers = content
 })
 
+fs.readFile(path.resolve(__dirname, "styles.css"), 'utf-8', function (err, content) {
+    if (err) {
+        console.log(err.stack);
+    }
+    css = content
+})
+
+let ya;
+
+fs.readFile(path.resolve(__dirname, "ya.js"), 'utf-8', function (err, content) {
+    if (err) {
+        console.log(err.stack);
+    }
+    ya = content
+});
 
 let win;
 
@@ -72,6 +89,7 @@ app.on('quit', () => {
     })
     app.quit()
 })
+app.commandLine.appendSwitch('disable-features', "CrossSiteDocumentBlockingAlways,CrossSiteDocumentBlockingIfIsolating")
 
 function createWindow() {
     win = new BrowserWindow({width: 1000, height: 1000, webPreferences: {webSecurity: false}})
@@ -92,7 +110,7 @@ const test = ['контрольный тест']
 
 function isLab(title) {
     return lab.some((element) => {
-         return title.includes(element)
+        return title.includes(element)
     })
 }
 
@@ -107,8 +125,8 @@ function scam() {
         parseAnswersInDom()
     }
     if (isLab(win.webContents.getTitle().toLowerCase())) {
-
         let code = taskScam;
+        code = code + '\n' + `waitForIFrame().then(r => {${ya}})`
         win.webContents.insertCSS(css);
         win.webContents.executeJavaScript(code).then(r => {
             console.log(r)
@@ -118,6 +136,7 @@ function scam() {
     }
     if (isTest(win.webContents.getTitle().toLowerCase())) {
         let code = `var answers = ${answers.print()};${testScam}`;
+        code = code + '\n' + ya
         setTimeout(() => {
             win.webContents.executeJavaScript(code).then(r => {
                 console.log(r)
@@ -145,43 +164,5 @@ function parseAnswersInDom() {
         console.log(err.stack)
     });
 }
-
-const css = `.modal {
-  display: none; /* Hidden by default */
-  position: fixed; /* Stay in place */
-  z-index: 1; /* Sit on top */
-  padding-top: 100px; /* Location of the box */
-  left: 0;
-  top: 0;
-  width: 100%; /* Full width */
-  height: 100%; /* Full height */
-  overflow: auto; /* Enable scroll if needed */
-  background-color: rgb(0,0,0); /* Fallback color */
-  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-}
-
-/* Modal Content */
-.modal-content {
-  background-color: #fefefe;
-  margin: auto;
-  padding: 20px;
-  border: 1px solid #888;
-  width: 80%;
-}
-
-/* The Close Button */
-.close {
-  color: #aaaaaa;
-  float: right;
-  font-size: 28px;
-  font-weight: bold;
-}
-
-.close:hover,
-.close:focus {
-  color: #000;
-  text-decoration: none;
-  cursor: pointer;
-}`
 
 
