@@ -1,6 +1,6 @@
 {
   "name": "computer_graphics_scam",
-  "version": "1.4.1",
+  "version": "1.4.2",
   "description": "todo",
   "main": "main.js",
   "author": "vitekkor",
@@ -22,15 +22,28 @@
     "electron-builder": "^23.3.3"
   },
   "build": {
-    "productName": "computer_graphics_scam",
     "linux": {
-      "target": "AppImage",
+      "target": [
+        {
+          "target": "AppImage"
+        },
+        {
+          "target": "tar.gz"
+        }
+      ],
       "artifactName": "${name}-${version}-${os}-${arch}.${ext}",
       "icon": "icons/icon.png",
       "category": "Development"
     },
     "win": {
-      "target": "nsis",
+      "target": [
+        {
+          "target": "portable"
+        },
+        {
+          "target": "zip"
+        }
+      ],
       "artifactName": "${name}-${version}-${os}-${arch}.${ext}",
       "icon": "icons/icon.png"
     },
