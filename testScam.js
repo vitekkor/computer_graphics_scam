@@ -7,7 +7,23 @@ function getRealDoc() {
     }
 }
 
-(function testScam() {
+function waitForQuestions() {
+    return new Promise(resolve => {
+        if (getRealDoc().getElementsByClassName('problem-header').length > 0) {
+            return resolve(getRealDoc().getElementsByClassName('problem-header').length);
+        }
+        let timerId = setInterval(() => {
+            if (getRealDoc().getElementsByClassName('problem-header').length > 0) {
+                clearInterval(timerId)
+                return resolve(getRealDoc().getElementsByClassName('problem-header'));
+            }
+        }, 1000);
+    });
+}
+
+waitForQuestions().then(r => testScam())
+
+function testScam() {
     if (getRealDoc().getElementsByClassName('testScam').length) {
         console.log("Answers already added")
         return;
@@ -63,4 +79,4 @@ function getRealDoc() {
             }
         }
     });
-})();
+};
