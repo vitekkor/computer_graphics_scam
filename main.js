@@ -72,6 +72,15 @@ fs.readFile(path.resolve(__dirname, "ya.js"), 'utf-8', function (err, content) {
     ya = content
 });
 
+let pivo;
+
+fs.readFile(path.resolve(__dirname, "pivo.js"), 'utf-8', function (err, content) {
+    if (err) {
+        console.log(err.stack);
+    }
+    pivo = content
+});
+
 let win;
 
 app.whenReady().then(() => {
@@ -126,7 +135,7 @@ function scam() {
     }
     if (isLab(win.webContents.getTitle().toLowerCase())) {
         let code = taskScam;
-        code = code + '\n' + `waitForIFrame().then(r => {${ya}})`
+        code = pivo + '\n' + code + '\n' + `waitForIFrame().then(r => {${ya}})`
         win.webContents.insertCSS(css);
         win.webContents.executeJavaScript(code).then(r => {
             console.log(r)
@@ -136,7 +145,8 @@ function scam() {
     }
     if (isTest(win.webContents.getTitle().toLowerCase())) {
         let code = `var answers = ${answers.print()};${testScam}`;
-        code = code + '\n' + ya
+        code = pivo + '\n' + code + '\n' + ya
+        win.webContents.insertCSS(css);
         setTimeout(() => {
             win.webContents.executeJavaScript(code).then(r => {
                 console.log(r)
@@ -145,6 +155,17 @@ function scam() {
             })
         }, 2000);
     }
+    if (!isTest(win.webContents.getTitle().toLowerCase()) && !isLab(win.webContents.getTitle().toLowerCase())) {
+        ya2()
+    }
+}
+
+function ya2() {
+    win.webContents.executeJavaScript(ya).then(r => {
+        console.log(r)
+    }).catch(err => {
+        console.log(err.stack)
+    })
 }
 
 function parseAnswersInDom() {

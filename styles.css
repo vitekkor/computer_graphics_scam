@@ -64,17 +64,7 @@
     justify-content: center;
     align-items: center;
     flex-flow: column wrap;
-    height: 100%;
-    min-height: inherit;
-}
-
-.modal-window__backdrop {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.6);
+    min-height: auto;
 }
 
 .hidden {
