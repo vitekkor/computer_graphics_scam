@@ -7,7 +7,8 @@
   "scripts": {
     "start": "electron .",
     "package": "electron-packager ./ -all",
-    "dist": "electron-builder"
+    "build": "electron-builder",
+    "release": "electron-builder --publish always"
   },
   "keywords": [],
   "license": "ISC",
