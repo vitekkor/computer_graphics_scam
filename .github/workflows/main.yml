@@ -21,6 +21,6 @@ jobs:
           electronuserland/builder:wine
       - name: Build
         uses: actions/setup-node@v3
-      - run: npm dist
+      - run: npm run dist
       - name: Show
         run: pwd && ls
