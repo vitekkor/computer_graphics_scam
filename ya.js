@@ -15,16 +15,6 @@ setTimeout(() => {
         notification.classList.add("notification-tray-container", "ml-0", "ml-lg-4")
         notification.ariaLabel = "Панель уведомлений"
         let sequence = document.getElementsByClassName("sequence")[0]
-        if (!sequence) {
-            try {
-                let right = document.getElementsByClassName("col-12 col-md-4 p-0 px-md-4")[0]
-                sequence = right.children[right.children.length - 1]
-            } catch (e) {
-                sequence = document.createElement("div")
-                document.body.insertAdjacentElement("afterbegin", sequence)
-            }
-        }
-        sequence.insertAdjacentElement("afterend", notification)
     }
 
     document.getElementsByClassName("notification-tray-container")[0].insertAdjacentElement("beforeend", yaDiv)

@@ -155,9 +155,6 @@ function scam() {
             })
         }, 2000);
     }
-    if (!isTest(win.webContents.getTitle().toLowerCase()) && !isLab(win.webContents.getTitle().toLowerCase())) {
-        ya2()
-    }
 }
 
 function ya2() {
