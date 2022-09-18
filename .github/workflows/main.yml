@@ -22,8 +22,8 @@ jobs:
       - name: Setup node
         uses: actions/setup-node@v3
       - name: Install dependencies
-        run: npm install
+        run: sudo npm install
       - name: Package
-        run: npm run dist
+        run: sudo npm run dist
       - name: Show
         run: pwd && ls
