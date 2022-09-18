@@ -6,7 +6,8 @@
   "author": "vitekkor",
   "scripts": {
     "start": "electron .",
-    "package": "electron-packager ./ -all"
+    "package": "electron-packager ./ -all",
+    "dist": "electron-builder"
   },
   "keywords": [],
   "license": "ISC",
@@ -16,6 +17,7 @@
   },
   "devDependencies": {
     "electron": "^15.0.0",
-    "electron-packager": "^15.4.0"
+    "electron-packager": "^15.4.0",
+    "electron-builder": "^23.3.3"
   }
 }
