@@ -6,6 +6,10 @@ Utility for cheating tasks on [computer graphics](https://openedu.ru/course/spbs
 
 ## This project was created for entertainment purposes only. The author does not bear any responsibility for you. Do this at your own peril and risk.
 
+## Поддержать разработчика
+
+Поддержать проект можно [тут](https://www.tinkoff.ru/cf/5RmrFwtJ4F9)
+
 ## How to use
 
 1. Launch the application
