@@ -1,6 +1,6 @@
 {
   "name": "computer_graphics_scam",
-  "version": "1.4.2",
+  "version": "2.0.0",
   "description": "todo",
   "main": "main.js",
   "author": "vitekkor",
@@ -18,7 +18,7 @@
   },
   "devDependencies": {
     "electron": "^15.0.0",
-    "electron-packager": "^15.4.0",
+    "electron-packager": "^16.0.0",
     "electron-builder": "^23.3.3"
   },
   "build": {
