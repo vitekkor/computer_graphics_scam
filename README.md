@@ -18,6 +18,12 @@ Utility for cheating tasks on [computer graphics](https://openedu.ru/course/spbs
 4. Click Paste In Editor, then Check Result.
 5. Great! You are awesome!
 
+## Troubleshooting
+
+#### If you don't see the scam button or have some other problem, try refreshing the page (ctrl+r or f5). In most cases, it solves the problem. 
+
+#### If this does not help you, create a issue and describe your problem. Also attach the log file (ctrl+shift+i opens devtools)
+
 ## Installation
 
 Download the archive from the [releases](https://github.com/vitekkor/computer_graphics_scam/releases/latest) or build it yourself (required npm):
