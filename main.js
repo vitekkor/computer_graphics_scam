@@ -102,7 +102,7 @@ function createWindow() {
         console.log('cleared');
     })*/
 
-    win.loadURL('https://apps.openedu.ru/learning/course/course-v1:spbstu+COMPGR+fall_2022/progress')
+    win.loadURL('https://apps.openedu.ru/learning/course/course-v1:spbstu+COMPGR+fall_2023/progress')
 }
 
 const lab = ['задание', 'лабораторная работа']
