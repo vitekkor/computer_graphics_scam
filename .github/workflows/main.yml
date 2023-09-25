@@ -22,4 +22,5 @@ jobs:
         with:
           github_token: ${{ secrets.github_token }}
           release: true
+          EP_GH_IGNORE_TIME: true
       
