@@ -4,7 +4,7 @@ const path = require('path');
 const fs = require('fs');
 const AdmZip = require("adm-zip");
 
-const zip = 'https://docs.google.com/spreadsheets/d/1-BuF9tmzmS9vNit6lKD3-Pihis83q6HMP1TtYhQ73bA/export?format=zip'
+const zip = 'https://docs.google.com/spreadsheets/d/1nIc7zYkAK_jFE9zc8EuTQTz-ScXQRhpLrJyB9mg1UXo/export?format=zip'
 
 const zipFile = fs.createWriteStream("answers.zip");
 let unparsedAnswers;
@@ -102,7 +102,7 @@ function createWindow() {
         console.log('cleared');
     })*/
 
-    win.loadURL('https://apps.openedu.ru/learning/course/course-v1:spbstu+COMPGR+fall_2022/progress')
+    win.loadURL('https://apps.openedu.ru/learning/course/course-v1:spbstu+COMPGR+fall_2023/progress')
 }
 
 const lab = ['задание', 'лабораторная работа']
