@@ -19,8 +19,9 @@ jobs:
         uses: actions/setup-node@v3
       - name: Build/release Electron app
         uses: samuelmeuli/action-electron-builder@v1
+        env:
+          EP_GH_IGNORE_TIME: true
         with:
           github_token: ${{ secrets.github_token }}
           release: true
-          EP_GH_IGNORE_TIME: true
       
